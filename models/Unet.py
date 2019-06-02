@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[9]:
-
-
 from keras.models import *
 from keras.layers import *
 from keras.optimizers import *
@@ -58,20 +52,8 @@ class Unet:
         return self.model
 
 
-# In[10]:
-
 
 unet = Unet()
-
-
-# In[11]:
-
-
 unet_model = unet.get_model()
-
-
-# In[12]:
-
-
 unet_model.summary()
 
