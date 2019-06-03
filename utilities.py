@@ -1,4 +1,6 @@
-
+import cv2 as cv
+import tensorflow as tf
+import matplotlib.pyplot as plt
 
 def load_image(path, mask=False, shape=(256,256)):
     """
@@ -68,7 +70,7 @@ def get_weights(data):
     Naive approach weighted loss function, pixel by pixel, waay to slow! 
     Never doing this again, was fool but we learnt!
 
-    ""
+    """
     num_img , width_height = data.shape
     constant = 1 / 46
     weights = np.zeros((num_img , width_height)) + ( constant / 47)
@@ -189,18 +191,4 @@ def my_loss_ultimatum(y_true, y_fake, gamma=2):
     SegNet without pre-trained weights
     """
     
-    return -tf.reduce_sum(K.pow(1. - y_fake, gamma) * y_true * K.log(y_fake)) #Focal Loss
-
-def f1(y_true, y_pred):
-    y_pred = K.round(y_pred)
-    tp = K.sum(K.cast(y_true*y_pred, 'float'), axis=0)
-    # tn = K.sum(K.cast((1-y_true)*(1-y_pred), 'float'), axis=0)
-    fp = K.sum(K.cast((1-y_true)*y_pred, 'float'), axis=0)
-    fn = K.sum(K.cast(y_true*(1-y_pred), 'float'), axis=0)
-
-    p = tp / (tp + fp + K.epsilon())
-    r = tp / (tp + fn + K.epsilon())
-
-    f1 = 2*p*r / (p+r+K.epsilon())
-    f1 = tf.where(tf.is_nan(f1), tf.zeros_like(f1), f1)
-    return K.mean(f1)
+    return -tf.reduce_sum(tf.pow(1. - y_fake, gamma) * y_true * tf.log(y_fake)) #Focal Loss
