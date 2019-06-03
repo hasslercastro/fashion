@@ -1,10 +1,11 @@
+
 from keras.models import *
 from keras.layers import *
 from keras.optimizers import *
 from keras import backend as keras
 
 class Unet:
-    def __init__(self,pretrained_weights = None,input_size = (256,256,1),n_label=46):
+    def __init__(self,input_size = (256,256,3),n_label=47):
         inputs = Input(input_size)
         conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
         conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv1)
@@ -43,17 +44,12 @@ class Unet:
         merge9 = concatenate([conv1,up9], axis = 3)
         conv9 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(merge9)
         conv9 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv9)
-        conv10 = Conv2D(n_label, 1, activation = 'sigmoid')(conv9)
-        reshaped = Reshape((input_size[0] * input_size[1] , n_label))(conv10)
+        conv10 = Conv2D(n_label, 1)(conv9)
+        activated = Activation('softmax')(conv10)
 
-        self.model = Model(input = inputs, output = reshaped)
+        self.model = Model(input = inputs, output = activated)
         
     def get_model(self):
         return self.model
 
-
-
-unet = Unet()
-unet_model = unet.get_model()
-unet_model.summary()
 

@@ -39,7 +39,6 @@ def final_block(_input, kernel, feature_maps, classes , img_w, img_h,channels):
     X = Conv2D(feature_maps, (kernel, kernel), strides=(1, 1), padding='same', activation='relu')(X)  
     X = BatchNormalization()(X)
     X = Conv2D(classes, (1, 1), strides=(1, 1), padding='same')(X)
-    X = Reshape((img_w*img_h, classes))(X)
     return X
 
 def seg_net(input_shape , classes = 47 , kernel = 3, fmap = 64):  
