@@ -24,25 +24,25 @@ This dataset   contains   50,000   clothing   images   (40,00with  apparel  inst
 
 #### Files
 
-utilities.py : Contains some useful functions, and the following losses and metrics:
-    - Weighted Categorical Cross Entropy
-    - Focal Loss
-    - Dice Loss
-    - Intersection over Union
+    utilities.py : Contains some useful functions, and the following losses and metrics:
+        - Weighted Categorical Cross Entropy
+        - Focal Loss
+        - Dice Loss
+        - Intersection over Union
 
-Model.ipynb : Contains the training process of each model (models from /Models folder), and shows comparisions between them:
-    - Custom data Generator.
-    - Keras train method.
+    Model.ipynb : Contains the training process of each model (models from /Models folder), and shows comparisions between them:
+        - Custom data Generator.
+        - Keras train method.
 
-DataUnderstanding.ipynb : Data analysis, and preprocessing processes:
-    - Data exploration.
-    - Assign one single mask to each image.
-    - Custom Weights
-    - Subsets
+    DataUnderstanding.ipynb : Data analysis, and preprocessing processes:
+        - Data exploration.
+        - Assign one single mask to each image.
+        - Custom Weights
+        - Subsets
 
-Results.ipynb : Training results:
-    - Training and validation losses
-    - Comparision between SegNet and Atrous - ResNet50
+    Results.ipynb : Training results:
+        - Training and validation losses
+        - Comparision between SegNet and Atrous - ResNet50
 
 ## Results: 
 
