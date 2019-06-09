@@ -14,14 +14,10 @@ from keras_applications.imagenet_utils import _obtain_input_shape
 import keras.backend as K
 import tensorflow as tf
 
-from utils.get_weights_path import *
+
 from utils.basics import *
 from utils.resnet_helpers import *
 from utils.BilinearUpSampling import *
-
-
-# In[2]:
-
 
 def top(x, input_shape, classes, activation, weight_decay):
 
@@ -88,8 +84,7 @@ def FCN_Vgg16_32s(input_shape=None, weight_decay=0., batch_momentum=0.9, batch_s
 
     model = Model(img_input, x)
 
-    weights_path = os.path.expanduser(os.path.join('~', '.keras/models/fcn_vgg16_weights_tf_dim_ordering_tf_kernels.h5'))
-    model.load_weights(weights_path, by_name=True)
+    
     return model
 
 
@@ -140,8 +135,8 @@ def AtrousFCN_Vgg16_16s(input_shape=None, weight_decay=0., batch_momentum=0.9, b
 
     model = Model(img_input, x)
 
-    weights_path = os.path.expanduser(os.path.join('~', '.keras/models/fcn_vgg16_weights_tf_dim_ordering_tf_kernels.h5'))
-    model.load_weights(weights_path, by_name=True)
+    
+    
     return model
 
 
@@ -185,8 +180,7 @@ def FCN_Resnet50_32s(input_shape = None, weight_decay=0., batch_momentum=0.9, ba
     x = BilinearUpSampling2D(size=(32, 32))(x)
 
     model = Model(img_input, x)
-    weights_path = os.path.expanduser(os.path.join('~', '.keras/models/fcn_resnet50_weights_tf_dim_ordering_tf_kernels.h5'))
-    model.load_weights(weights_path, by_name=True)
+    
     return model
 
 
@@ -232,8 +226,7 @@ def AtrousFCN_Resnet50_16s(input_shape = None, weight_decay=0., batch_momentum=0
 
 
     model = Model(img_input, x)
-    weights_path = os.path.expanduser(os.path.join('~', '.keras/models/fcn_resnet50_weights_tf_dim_ordering_tf_kernels.h5'))
-    model.load_weights(weights_path, by_name=True)
+    
     return model
 
 
@@ -320,6 +313,7 @@ def DenseNet_FCN(input_shape=None, weight_decay=1E-4,
                                         include_top=include_top)
 
     x = top(x, input_shape, classes, activation, weight_decay)
+    x = Activation('softmax')(x)
     # TODO(ahundt) add weight loading
     model = Model(img_input, x, name='DenseNet_FCN')
     return model

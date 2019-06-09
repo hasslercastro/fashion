@@ -21,6 +21,9 @@ This dataset   contains   50,000   clothing   images   (40,00with  apparel  inst
         - Atrous ResNet 50
         - FCN ResNet 50
         - DeepNet 
+    
+    - /weights/weights_dataset_models
+        - Download weights here
 
 #### Files
 
@@ -43,6 +46,8 @@ This dataset   contains   50,000   clothing   images   (40,00with  apparel  inst
     Results.ipynb : Training results:
         - Training and validation losses
         - Comparision between SegNet and Atrous - ResNet50
+    
+    Demo.ipynb: Notebook where you can try your own images
 
 ## Results: 
 
@@ -70,3 +75,16 @@ Real categories
 
 
 !["results"](./images/results_f.png)
+
+## Try your own images
+
+    - Prerequisites 
+    
+    conda create --name <environmentname>
+    conda activate <environmentname>
+
+    pip install -r requirements.txt
+
+    Download models [weights](https://drive.google.com/open?id=14A_g5tHHFfEjL4o4MAVl-CDvhhHAUTVu) and place them in the _weigths_dataset_models_ folder
+
+    You are done! 

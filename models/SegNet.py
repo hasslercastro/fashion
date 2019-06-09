@@ -1,9 +1,10 @@
 from keras.models import Model, load_model, Sequential
 from keras.layers import Input, BatchNormalization, Activation, Dense, Dropout, UpSampling2D, Permute
 from keras.layers.core import Lambda, RepeatVector, Reshape
-from keras.layers.convolutional import Conv2D
+from keras.layers.convolutional import Conv2D, Conv2DTranspose
 from keras.layers.pooling import MaxPooling2D, GlobalMaxPool2D
-
+from keras.layers.merge import concatenate, add
+from keras.optimizers import Adam
 
 def simple_block(_input , kernel, feature_maps, decoder=False):
     X = Conv2D(feature_maps , (kernel,kernel) , strides=(1,1) ,padding='same', activation='relu')(_input)

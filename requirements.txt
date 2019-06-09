@@ -1,0 +1,9 @@
+h5py
+Keras
+Keras-Applications
+git+https://www.github.com/keras-team/keras-contrib.git
+Keras-Preprocessing
+matplotlib
+numpy
+opencv-python
+tensorflow
