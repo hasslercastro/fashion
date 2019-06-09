@@ -87,7 +87,11 @@ Real categories
     
     python -m ipykernel install --user --name myenv
 
-    Download models 
-
+    Download models weights 
+    
+    https://drive.google.com/open?id=14A_g5tHHFfEjL4o4MAVl-CDvhhHAUTVu
+    
+    and place them in the _weigths_dataset_models_ folder
 
     You are done! 
+
